@@ -14,6 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -60,12 +61,12 @@
                 </div>
                 <div class="progress-div d-flex flex-column jusitfy-content-center text-white">
 
-                    <h3 class="text-white">
+                    <h3 class="text-white" id="progressBarText">
                         99.2%
                     </h3>
                     <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 96%" aria-valuenow="96"
-                            aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-warning" role="progressbar" id="progressBar" style="width: 96%"
+                            aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
 
                         </div>
                     </div>
@@ -98,20 +99,24 @@
                     </h1>
                     <p>The power of AI puts brand compliance at your fingertips</p>
                     <div class="d-flex flex-row">
-                        <div class="d-flex flex-column card">
+                        <div class="d-flex flex-column justify-content-center card">
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                    class="bi bi-upload bg-white icon" viewBox="0 0 16 16">
-                                    <path
-                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                                    <path
-                                        d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
-                                </svg>
+
                             </div>
-                            <p>Upload New Files</p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01"></span>
+                                </div>
+
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01"></label>
+
+                            </div>
+                            <p>Upload Files</p>
                         </div>
-                        <div class="d-flex flex-column card">
-                            <div>
+                        <div class="d-flex flex-column justify-content-center card" id="runProgram">
+                            <div class="pb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                                     class="bi bi-play bg-white icon" viewBox="0 0 16 16">
                                     <path
@@ -120,15 +125,48 @@
                             </div>
                             <p>Run Program</p>
                         </div>
-                        <div class="d-flex flex-column card">
-                            <div>
+                        <div class="d-flex flex-column justify-content-center text-center card">
+                            <div class="pb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                    class="bi bi-search bg-white icon" viewBox="0 0 16 16">
+                                    class="bi bi-search" viewBox="0 0 16 16">
                                     <path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
                             </div>
-                            <p>See Results</p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-secondary" data-toggle="modal"
+                                data-target="#exampleModal">
+                                See Results
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Recent Logs</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Report - Print materials - B2C brochures - Logo Fails</p>
+                                            <p>Report - Detail Materials - Digital web banner ads - Incorrect color
+                                                usage</p>
+                                            <p>
+                                                Report - Print Materials - In-branch Materials - Inconcistent typography
+                                                point sizes
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="d-flex flex-column recent-log p-3 mt-3">
@@ -197,14 +235,14 @@
                     <div class="recent-log p-1 mt-3">
                         <h5>Latest Reports</h5>
                         <div class="d-flex flex-row">
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column" id="timeDetails">
                                 <p>Febuary 27, 2021 009:07</p>
                                 <p>Febuary 16, 2021: 14:32</p>
                                 <p>
                                     March 08, 2021 16:49:
                                 </p>
                             </div>
-                            <div class="flex-column">
+                            <div class="flex-column" id="descDetails">
                                 <p>Report - Print materials - B2C brochures - Logo Fails</p>
                                 <p>Report - Detail Materials - Digital web banner ads - Incorrect color usage</p>
                                 <p>
@@ -213,7 +251,7 @@
                             </div>
 
                         </div>
-                        <p>Load more</p>
+                        <button id="loadMoreBtn" class="btn btn-warning custom-button">Load More</button>
                     </div>
                 </div>
             </div>
@@ -325,7 +363,7 @@
             </div>
         </div>
     </div>
-
+    <script src="./index.js"></script>
 </body>
 
 </html>
